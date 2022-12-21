@@ -56,7 +56,7 @@
 </div>
 
 <div>
-  <TabBar tabs={['Residential', 'Commercial', 'Other']} let:tab bind:activeTab>
+  <TabBar tabs={['Residential', 'Commercial', 'Other']} let:tab bind:active={activeTab}>
     <Tab {tab}>
       <Label>{tab}</Label>
     </Tab>
