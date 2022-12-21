@@ -4,11 +4,16 @@
   import AccordionToggle from './AccordionToggle.svelte'
   import Counter from './Counter.svelte'
   import Accordion, { Panel, Header, Content } from '@smui-extra/accordion';
+  import Tab, { Label } from '@smui/tab';
+  import TabBar from '@smui/tab-bar';
+  import Button from '@smui/button';
 
   let panel1Open = false;
   let panel2Open = false;
   let panel3Open = false;
   let panel4Open = false;
+
+  let activeTab = 'Residential';
 </script>
 
 <h1>Playground</h1>
@@ -48,6 +53,21 @@
 
 <div class="card">
   <Counter />
+</div>
+
+<div>
+  <TabBar tabs={['Residential', 'Commercial', 'Other']} let:tab bind:activeTab>
+    <Tab {tab}>
+      <Label>{tab}</Label>
+    </Tab>
+  </TabBar>
+{#if activeTab == 'Residential'}
+<p>Form 1</p>
+{:else if activeTab == 'Commercial'}
+<p>Form 2</p>
+{:else if activeTab == 'Other'}
+<p>Form 3</p>
+{/if}
 </div>
 
 <style>
