@@ -8,10 +8,16 @@
   import TabBar from "@smui/tab-bar";
   import Button from "@smui/button";
 
+  import init, { JsStreetNetwork } from "osm2streets-js";
+
   let panel1 = false;
   let panel2 = false;
 
   let activeTab = "Residential";
+
+  init().then(() => {
+    console.log(`It worked!?`);
+  });
 </script>
 
 <h1>Playground</h1>
