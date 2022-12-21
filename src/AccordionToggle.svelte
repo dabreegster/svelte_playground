@@ -1,6 +1,6 @@
 <script>
-  import 'material-icons/iconfont/material-icons.css';
-  import IconButton, { Icon } from '@smui/icon-button';
+  import "material-icons/iconfont/material-icons.css";
+  import IconButton, { Icon } from "@smui/icon-button";
 
   export let open = false;
 </script>
