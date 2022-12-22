@@ -7,6 +7,8 @@
   import Tab, { Label } from "@smui/tab";
   import TabBar from "@smui/tab-bar";
   import Button from "@smui/button";
+  import { onMount } from "svelte";
+  import { Map } from "maplibre-gl";
 
   import init, { JsStreetNetwork } from "osm2streets-js";
   import osmInput from "./assets/input.osm?raw";
@@ -17,6 +19,9 @@
   let panel3 = false;
 
   let activeTab = "Residential";
+
+  let mapContainer;
+  let map;
 
   async function osm2streets() {
     await init();
@@ -31,6 +36,14 @@
     await new Promise((r) => setTimeout(r, 5000));
     return streets.toGeojsonPlain();
   }
+
+  onMount(async () => {
+    map = new Map({
+      container: mapContainer,
+      style:
+        "https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL",
+    });
+  });
 </script>
 
 <h1>Playground</h1>
@@ -90,9 +103,16 @@
   </Panel>
 </Accordion>
 
+<div class="map" bind:this={mapContainer} />
+
 <style>
   .card {
     padding: 20px;
     background: red;
+  }
+
+  .map {
+    width: 100%;
+    height: 400px;
   }
 </style>
